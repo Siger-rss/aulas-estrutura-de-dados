@@ -5,7 +5,7 @@ float *nota;
 
     printf("Qual o número de notas? ");
     scanf("%d",&n);
-    nota = (float *) malloc(sizeof(float));
+    nota = (float *) malloc(n* sizeof(float));
 
     if(nota!=NULL){
     
