@@ -13,7 +13,6 @@ float IMC(float altura, float peso)
   
 }
 
-
 const char *Mtab(float pimc) {
 
     if ((pimc>20.7 && pimc<26.4) || pimc==20.7) {
