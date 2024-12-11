@@ -13,7 +13,6 @@ float IMC(float altura, float peso)
   
 }
 
-
 const char *Mtab(float pimc) {
 
     if ((pimc>20.7 && pimc<26.4) || pimc==20.7) {
@@ -66,14 +65,14 @@ int main() {
     getchar();
 
     printf("CPF de %s: ", pessoa[i].nome);
-    scanf("%i", &pessoa[i].cpf);
+    scanf("%d", &pessoa[i].cpf);
     getchar();
   
-    printf("altura de %s: ", pessoa[i].nome);
+    printf("altura de %s:(cm) ", pessoa[i].nome);
     scanf("%f", &pessoa[i].altura);
     getchar();
 
-    printf("peso de %s: ", pessoa[i].nome);
+    printf("peso de %s:(kg) ", pessoa[i].nome);
     scanf("%f", &pessoa[i].peso);
     getchar();
 
@@ -93,20 +92,22 @@ int t=0;
     }
 
     }
+    int ncpf=0;
     for(int i=0; i<5; i++){
         if(pessoa[i].cpf==find){
-        pimc=IMC(pessoa[i].altura,pessoa[i].peso);
+            ncpf=1;
+        pimc=IMC(pessoa[i].altura/100,pessoa[i].peso);
         if(pessoa[i].gen=='m' || pessoa[i].gen=='M'){
              ccondi = Mtab(pimc);
         }else{
              ccondi = Ftab(pimc);
         }
-
-        printf("sexo: %c\t nome: %s\t IMC: %f\t condicao: %s", pessoa[i].gen, pessoa[i].nome, pimc, ccondi);
-    
-    }else{
-        printf("cpf nao encontrado");
+        printf("sexo: %c\t nome: %s\t IMC: %.2f\t condicao: %s", pessoa[i].gen, pessoa[i].nome, pimc, ccondi);
+         break;
     }
+    }
+        if(ncpf==0){
+        printf("cpf nao encontrado");
     }
     
        return 0;
