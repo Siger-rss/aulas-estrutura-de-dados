@@ -191,7 +191,7 @@ int main() {
 }
   
     resposta='n';
-    if (!postsEstaoCheios(perfis[indicePerfil].postagens)){//testa se a pilha de post ta cheia, percebe o !, pq é o msm de cima, ent se 
+    if (!postsEstaoCheios(perfis[indicePerfil].postagens)){//testa se a pilha de post ta cheia, percebe o !, pq é o msm de cima
         printf("\ndeseja excluir ultimo post? (s/n): ");
         scanf(" %c", &resposta);
 
