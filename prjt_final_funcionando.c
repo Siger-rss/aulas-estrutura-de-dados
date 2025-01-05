@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -27,14 +26,13 @@ Perfil criarPerfil() {
     Perfil p;
     printf("digite o nome do perfil: ");
     scanf(" %s", p.nome);
-
-
+    getchar();
 // faz a senha obrigatoriamente ter os 8 digitos, pra evitar erro, é mais facil só forçar sempre ser 8 msm
     int senhaValida = 0;
     while (!senhaValida){
         printf("digite sua senha (8 digitos): ");
         scanf(" %8s", p.senha);
-
+        getchar();
         if (strlen(p.senha) == 8){
             senhaValida = 1;
         }else{
@@ -55,6 +53,7 @@ Posts adicionarPost(Posts p){
     }
     printf("escreva o post: ");
     scanf(" %50s", p.postagens[p.topo]); // %50 é pro post n passar de 50 char. Limite de leitura para evitar buffer overflow
+    getchar();
     p.topo++;
     return p;
 }
@@ -111,7 +110,7 @@ int escolherPerfil(Perfil perfis[], int totalPerfis){// msm logica do de cima
     int escolha;
     printf("\ndigite o numero do perfil: ");
     scanf(" %d", &escolha);
-
+    getchar();
     if (escolha<1 || escolha>totalPerfis){
         printf("opcao invalida\n");
         return -1; 
@@ -126,8 +125,8 @@ int postsEstaoCheios(Posts p){
 int verificarsenha(char senha[]){
     char x[9];// tem q ser um a mais só pra garantir q n vai dar erro msm
     printf("digite a senha: ");
-    scanf(" %8s", &x); //sei la pq tem um errinho aq, mas ta funçando ent n tem problema
-
+    scanf(" %8s", x); //sei la pq tem um errinho aq, mas ta funçando ent n tem problema
+    getchar();
     if(strcmp(senha,x)==0){//strcmp pra comparar as strings
         return 1;
     }else{
@@ -144,7 +143,7 @@ int main() {
     while(princ!=2) {
         printf("\n-----------\no que deseja fazer?\n1) criar perfil\n2) encerrar \n3) login\n4) ver posts\n-----------  ");
         scanf(" %d", &opcao);
-
+        getchar();
 
         if(opcao==1){
             if (perfilAtual>=MAX){
@@ -183,6 +182,7 @@ int main() {
     printf("\n%s deseja postar? (s/n): ", perfis[indicePerfil].nome);
     
     scanf(" %c", &resposta);
+    getchar();
     if(resposta=='n'||resposta=='N'){
         break;
     }
@@ -194,7 +194,7 @@ int main() {
     if (!postsEstaoCheios(perfis[indicePerfil].postagens)){//testa se a pilha de post ta cheia, percebe o !, pq é o msm de cima
         printf("\ndeseja excluir ultimo post? (s/n): ");
         scanf(" %c", &resposta);
-
+        getchar();
         if (resposta=='s'||resposta=='S'){
         perfis[indicePerfil].postagens=removerPost(perfis[indicePerfil].postagens);
         }
@@ -209,7 +209,7 @@ int main() {
         printf("\ndeseja ver os posts qual perfil? ");
         mostrarPerfis(perfis, perfilAtual);
         scanf(" %d", &resposta);
-
+        getchar();
             mostrarPosts(perfis[resposta-1].postagens);}
 }else {
             printf("opcao invalida.\n");
