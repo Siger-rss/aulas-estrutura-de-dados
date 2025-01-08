@@ -10,7 +10,7 @@ typedef struct {
 
 typedef struct {
     char nome[12];
-    char senha[8];           //cada perfil tem nome senha e uma PILHA, essa pilha é a dos post
+    char senha[9];           //cada perfil tem nome senha e uma PILHA, essa pilha é a dos post
     Posts postagens;
 } Perfil;
 
