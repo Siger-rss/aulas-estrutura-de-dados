@@ -9,7 +9,7 @@ typedef struct {
 } Posts;
 
 typedef struct {
-    char nome[12];
+    char nome[30];
     char senha[9];           //cada perfil tem nome senha e uma PILHA, essa pilha é a dos post
     Posts postagens;
 } Perfil;
@@ -31,7 +31,7 @@ Perfil criarPerfil() {
     int senhaValida = 0;
     while (!senhaValida){
         printf("digite sua senha (8 digitos): ");
-        scanf(" %8s", p.senha);
+        scanf(" %s", p.senha);
         getchar();
         if (strlen(p.senha) == 8){
             senhaValida = 1;
@@ -51,9 +51,20 @@ Posts adicionarPost(Posts p){
         printf("limite de posts alcançado\n");
         return p;
     }
-    printf("escreva o post: ");
-    scanf(" %50s", p.postagens[p.topo]); // %50 é pro post n passar de 50 char. Limite de leitura para evitar buffer overflow
-    getchar();
+    int postvalido = 0;
+    while (!postvalido){
+        
+        printf("escreva o post: ");
+        scanf(" %s", p.postagens[p.topo]); // %50 é pro post n passar de 50 char. Limite de leitura para evitar buffer overflow
+        getchar();
+
+        if (strlen(p.postagens[p.topo]) > 50){
+            printf("o post deve conter no max 50 caracteres\n");
+        }else{
+            postvalido = 1;
+        }
+    }
+
     p.topo++;
     return p;
 }
@@ -177,6 +188,12 @@ int main() {
     while(resposta!='n' && resposta!='N'){
         if(postsEstaoCheios(perfis[indicePerfil].postagens)){//pega a pilha do perfil atual pra testar se ta cheia
             printf("nao e possivel adicionar mais posts\n");
+            printf("\ndeseja excluir ultimo post? (s/n): ");//caso estiver cheio ele pergunta se quer excluir o ultimo post pq se não n da mais pra entrar no perfil,mas aí ele pergunta duas vezes se quer excluir post mas fds
+            scanf(" %c", &resposta);
+            getchar();
+            if (resposta=='s'||resposta=='S'){
+            perfis[indicePerfil].postagens=removerPost(perfis[indicePerfil].postagens);
+            }
             break;
         }
     printf("\n%s deseja postar? (s/n): ", perfis[indicePerfil].nome);
