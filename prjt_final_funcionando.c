@@ -188,7 +188,7 @@ int main() {
     while(resposta!='n' && resposta!='N'){
         if(postsEstaoCheios(perfis[indicePerfil].postagens)){//pega a pilha do perfil atual pra testar se ta cheia
             printf("nao e possivel adicionar mais posts\n");
-            printf("\ndeseja excluir ultimo post? (s/n): ");//caso estiver cheio ele pergunta se quer excluir o ultimo post pq se não n da mais pra entrar no perfil,mas aí ele pergunta duas vezes se quer excluir post mas fds
+            printf("\ndeseja excluir ultimo post para postar de novo? (s/n): ");//caso estiver cheio ele pergunta se quer excluir o ultimo post pq se não n da mais pra entrar no perfil,mas aí ele pergunta duas vezes se quer excluir post mas fds
             scanf(" %c", &resposta);
             getchar();
             if (resposta=='s'||resposta=='S'){
