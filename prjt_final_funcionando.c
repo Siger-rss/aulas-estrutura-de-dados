@@ -14,14 +14,14 @@ typedef struct {
     Posts postagens;
 } Perfil;
 
-// Função para inicializar as postagens, aparentemente toda pilha precisa disso, só por causa do topo
+// função para inicializar as postagens, aparentemente toda pilha precisa disso, só por causa do topo
 Posts inicializarPosts() {
     Posts p;
     p.topo=0;
     return p;
 }
 
-// Função para criar um perfil, já pede o nome e a senha
+// função para criar um perfil, já pede o nome e a senha
 Perfil criarPerfil() {
     Perfil p;
     printf("digite o nome do perfil: ");
@@ -44,7 +44,7 @@ Perfil criarPerfil() {
     return p;
 }
 
-// Função para adicionar um post
+// função para adicionar um post
 Posts adicionarPost(Posts p){
     //verifica se a pilha de post ta cheia, só compara se o topo ta no  limite do MAX
     if (p.topo>=MAX) {
@@ -69,7 +69,7 @@ Posts adicionarPost(Posts p){
     return p;
 }
 
-// Função para remover um post
+// função para remover um post
 Posts removerPost(Posts p) {
     if (p.topo<=0){ // msm logica do topo
         printf("nao ha posts\n");
@@ -80,7 +80,7 @@ Posts removerPost(Posts p) {
     return p;
 }
 
-// Função para mostrar posts
+// função para mostrar posts
 void mostrarPosts(Posts p) {
     if (p.topo==0){ // se o topo n mudou é pq ta em zero, ou seja, vazio
         printf("nenhum post\n");
@@ -91,7 +91,7 @@ void mostrarPosts(Posts p) {
         printf("--%s\n", p.postagens[i]);
     }
 }
-// Função para mostrar os perfis 
+// função para mostrar os perfis 
 void mostrarPerfis(Perfil perfis[], int totalPerfis){
     /* os parametros q entram sao os perfis da pilha de perfil geral(totalperfis) e os perfis de dentro da pilha(perfis)
     perfil perfis é só a declaração que vai entrar algo desse tipo na função, ent oq ta entrando é um perfil[perfilAtual]
